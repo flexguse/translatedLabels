@@ -9,3 +9,5 @@ What we see in this prototype:
 - components must be configured as @Scope(value="prototype",proxyMode=ScopedProxyMode.TARGET_CLASS)
 - the aspect is called
 - the UI is empty
+
+See discussion https://github.com/peholmst/vaadin4spring/issues/18
