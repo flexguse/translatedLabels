@@ -12,6 +12,7 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
 
 /**
  * @author Christoph Guse, info@flexguse.de
@@ -37,14 +38,25 @@ public class TestUI extends UI implements ApplicationContextAware {
 	@Override
 	protected void init(VaadinRequest request) {
 		
+		setSizeFull();
+		
 		Panel panel = springContext.getBean(Panel.class);
+		panel.setSizeFull();
 		panel.setCaption("panel.caption");
 		panel.setSizeFull();
 		
+		VerticalLayout panelLayout = new VerticalLayout();
+		panelLayout.setSizeFull();
 		
 		Label label = springContext.getBean(Label.class);
 		label.setValue("label.caption");
-		panel.setContent(label);
+		panelLayout.addComponent(label);
+				
+		Label label2 = springContext.getBean(Label.class);
+		label.setValue("Hello World!");
+		panelLayout.addComponent(label2);
+		
+		panel.setContent(panelLayout);
 		
 		setContent(panel);
 

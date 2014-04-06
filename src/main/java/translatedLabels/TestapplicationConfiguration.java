@@ -15,41 +15,46 @@ import com.vaadin.ui.Panel;
 
 /**
  * @author Christoph Guse, info@flexguse.de
- *
+ * 
  */
 @Configuration
-@EnableAspectJAutoProxy
+/*
+ * This annotation enables @Aspect annotations. The property
+ * "proxyTargetClass=true" must be set otherwise classes matching any Pointcut
+ * are proxy classes and not the expected target classes.
+ */
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class TestapplicationConfiguration {
 
-	@Scope(value="prototype",proxyMode=ScopedProxyMode.TARGET_CLASS)
+	@Scope(value = "ui", proxyMode = ScopedProxyMode.TARGET_CLASS)
 	@Bean
-	public Label label(){
+	public Label label() {
 		return new Label();
 	}
-	
-	@Scope(value="prototype", proxyMode=ScopedProxyMode.TARGET_CLASS)
+
+	@Scope(value = "ui", proxyMode = ScopedProxyMode.TARGET_CLASS)
 	@Bean
-	public Panel panel(){
+	public Panel panel() {
 		return new Panel();
 	}
-	
+
 	@Bean
-	public ReloadableResourceBundleMessageSource messageSource(){
-		
+	public ReloadableResourceBundleMessageSource messageSource() {
+
 		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
 		messageSource.setBasename("classpath:/locale/translatedLabels");
 		messageSource.setCacheSeconds(10);
 		return messageSource;
-		
+
 	}
-	
+
 	@Bean
-	public TranslationAspect translationAspect(){
-		
-		TranslationAspect aspect = new TranslationAspect();
+	public org.vaadin.spring.i18n.TranslationAspect translationAspect() {
+
+		org.vaadin.spring.i18n.TranslationAspect aspect = new org.vaadin.spring.i18n.TranslationAspect();
 		aspect.setMessageSource(messageSource());
-		
+
 		return aspect;
-		
+
 	}
 }

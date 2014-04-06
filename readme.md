@@ -6,8 +6,11 @@ Prerequisites:
 - spring-boot-vaadin 0.0.2-SNAPSHOT installed locally
 
 What we see in this prototype:
-- components must be configured as @Scope(value="prototype",proxyMode=ScopedProxyMode.TARGET_CLASS)
+- components must be configured as @Scope(value="ui",proxyMode=ScopedProxyMode.TARGET_CLASS)
 - the aspect is called
-- the UI is empty
+- the UI is filled
+
+Current problems:
+- prototype scope does not work, so in the application there only is one label instead of two expected (one translated, one untranslated)
 
 See discussion https://github.com/peholmst/vaadin4spring/issues/18
