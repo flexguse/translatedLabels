@@ -13,3 +13,9 @@
 /target/classes/translatedLabels/TestapplicationConfiguration.class
 /target/classes/translatedLabels/TranslationAspect.class
 /target/test-classes/translatedLabels/ApplicationTests.class
+
+/src/main/resources/rebel.xml
+
+/target/classes/org/vaadin/spring/i18n/TranslationAspect.class
+/target/classes/rebel.xml
+/target/classes/translatedLabels/AppWidgetSet.gwt.xml
